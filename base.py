@@ -12,10 +12,13 @@ from RGBMatrixEmulator.emulators.options import RGBMatrixEmulatorConfig
 from PIL import Image
 import re
 from math import trunc
-
+from utils import args, led_matrix_options
 from numpy import append
 
-matrix = RGBMatrix(options = RGBMatrixOptions())
+command_line_args = args()
+matrixOptions = led_matrix_options(command_line_args)
+
+matrix = RGBMatrix(options = matrixOptions)
 canvas = matrix.CreateFrameCanvas()
 colors_json = open('colors/teams.json')
 team_colors = json.load(colors_json)
