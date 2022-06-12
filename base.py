@@ -161,27 +161,39 @@ while True:
             time.sleep(2)
 
     def _render_postgame(today_games):
-        home_name = today_games['h']['ta']
-        home_record = '(' + today_games['h']['re'] + ')'
-        home_score = today_games['h']['s']
-        vis_name = today_games['v']['ta']
-        vis_record = '(' + today_games['v']['re'] + ')'
-        vis_score = today_games['v']['s']
-        home_text_Color = graphics.Color(team_colors[today_games['h']['ta']]["text"]["r"], team_colors[today_games['h']['ta']]["text"]["g"], team_colors[today_games['h']['ta']]["text"]["b"])
-        vis_text_Color = graphics.Color(team_colors[today_games['v']['ta']]["text"]["r"], team_colors[today_games['v']['ta']]["text"]["g"], team_colors[today_games['v']['ta']]["text"]["b"])
+        home_name = today_games['hls']['ta']
+        home_record = '(' + today_games['hls']['re'] + ')'
+        home_score = today_games['hls']['s']
+        vis_name = today_games['vls']['ta']
+        vis_record = '(' + today_games['vls']['re'] + ')'
+        vis_score = today_games['vls']['s']
+        home_text_Color = graphics.Color(team_colors[today_games['hls']['ta']]["text"]["r"], team_colors[today_games['hls']['ta']]["text"]["g"], team_colors[today_games['hls']['ta']]["text"]["b"])
+        vis_text_Color = graphics.Color(team_colors[today_games['vls']['ta']]["text"]["r"], team_colors[today_games['vls']['ta']]["text"]["g"], team_colors[today_games['vls']['ta']]["text"]["b"])
+        home_banner_r = team_colors[today_games['hls']['ta']]["banner"]["r"]
+        home_banner_g = team_colors[today_games['hls']['ta']]["banner"]["g"]
+        home_banner_b = team_colors[today_games['hls']['ta']]["banner"]["b"]
+        vis_banner_r = team_colors[today_games['vls']['ta']]["banner"]["r"]
+        vis_banner_g = team_colors[today_games['vls']['ta']]["banner"]["g"]
+        vis_banner_b = team_colors[today_games['vls']['ta']]["banner"]["b"]
+        home_accent_r = team_colors[today_games['hls']['ta']]["accent"]["r"]
+        home_accent_g = team_colors[today_games['hls']['ta']]["accent"]["g"]
+        home_accent_b = team_colors[today_games['hls']['ta']]["accent"]["b"]
+        vis_accent_r = team_colors[today_games['vls']['ta']]["accent"]["r"]
+        vis_accent_g = team_colors[today_games['vls']['ta']]["accent"]["g"]
+        vis_accent_b = team_colors[today_games['vls']['ta']]["accent"]["b"]
         while True:
             for x in range(2,64):
                 for y in range(0,8):
-                    canvas.SetPixel(x, y, team_colors[today_games['h']['ta']]["banner"]["r"], team_colors[today_games['h']['ta']]["banner"]["g"], team_colors[today_games['h']['ta']]["banner"]["b"])
+                    canvas.SetPixel(x, y, home_banner_r, home_banner_g, home_banner_b)
             for x in range(0,2):
                 for y in range(0,8):
-                    canvas.SetPixel(x, y, team_colors[today_games['h']['ta']]["accent"]["r"], team_colors[today_games['h']['ta']]["accent"]["g"], team_colors[today_games['h']['ta']]["accent"]["b"])
+                    canvas.SetPixel(x, y, home_accent_r, home_accent_g, home_accent_b)
             for x in range(2,64):
                 for y in range(9,17):
-                    canvas.SetPixel(x, y, team_colors[today_games['v']['ta']]["banner"]["r"], team_colors[today_games['v']['ta']]["banner"]["g"], team_colors[today_games['v']['ta']]["banner"]["b"])
+                    canvas.SetPixel(x, y, vis_banner_r, vis_banner_g, vis_banner_b)
             for x in range(0,2):
                 for y in range(9,17):
-                    canvas.SetPixel(x, y, team_colors[today_games['v']['ta']]["accent"]["r"], team_colors[today_games['v']['ta']]["accent"]["g"], team_colors[today_games['v']['ta']]["accent"]["b"])
+                    canvas.SetPixel(x, y, vis_accent_r, vis_accent_g, vis_accent_b)
             graphics.DrawText(canvas, font_2, 3, 7, home_text_Color, home_name)
             graphics.DrawText(canvas, font_2, 3, 16, vis_text_Color, vis_name)
             graphics.DrawText(canvas, font_1, 19, 7, home_text_Color, home_record)
