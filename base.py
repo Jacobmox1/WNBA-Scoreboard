@@ -70,6 +70,11 @@ while True:
         vis_score = str(today_games['vls']['s'])
         quarter = 'Q' + str(today_games['p'])
         last_play_clock = today_games['lpla']['cl']
+
+        score_x = 21
+        if int(today_games['hls']['s']) >= 100 or int(today_games['hls']['s']) >= 100:
+            score_x = 19
+
         try:
             last_play_clock = datetime.strptime(last_play_clock,"%M:%S.%f").strftime("%#S.%f")[:-5]
         except ValueError:
@@ -84,30 +89,40 @@ while True:
             last_play_desc_2 = ''
         home_text_Color = graphics.Color(team_colors[today_games['hls']['ta']]["text"]["r"], team_colors[today_games['hls']['ta']]["text"]["g"], team_colors[today_games['hls']['ta']]["text"]["b"])
         vis_text_Color = graphics.Color(team_colors[today_games['vls']['ta']]["text"]["r"], team_colors[today_games['vls']['ta']]["text"]["g"], team_colors[today_games['vls']['ta']]["text"]["b"])
+        home_fouls_check = int(today_games['hls']['ftout'])
+        vis_fouls_check =  int(today_games['vls']['ftout'])
+        home_banner_r = team_colors[today_games['hls']['ta']]["banner"]["r"]
+        home_banner_g = team_colors[today_games['hls']['ta']]["banner"]["g"]
+        home_banner_b = team_colors[today_games['hls']['ta']]["banner"]["b"]
+        vis_banner_r = team_colors[today_games['vls']['ta']]["banner"]["r"]
+        vis_banner_g = team_colors[today_games['vls']['ta']]["banner"]["g"]
+        vis_banner_b = team_colors[today_games['vls']['ta']]["banner"]["b"]
+        home_accent_r = team_colors[today_games['hls']['ta']]["accent"]["r"]
+        home_accent_g = team_colors[today_games['hls']['ta']]["accent"]["g"]
+        home_accent_b = team_colors[today_games['hls']['ta']]["accent"]["b"]
+        vis_accent_r = team_colors[today_games['vls']['ta']]["accent"]["r"]
+        vis_accent_g = team_colors[today_games['vls']['ta']]["accent"]["g"]
+        vis_accent_b = team_colors[today_games['vls']['ta']]["accent"]["b"]
         for x in range(2,31):
             for y in range(0,8):
-                canvas.SetPixel(x, y, team_colors[today_games['hls']['ta']]["banner"]["r"], team_colors[today_games['hls']['ta']]["banner"]["g"], team_colors[today_games['hls']['ta']]["banner"]["b"])
+                canvas.SetPixel(x, y, home_banner_r, home_banner_g, home_banner_b)
         for x in range(0,2):
             for y in range(0,8):
-                canvas.SetPixel(x, y, team_colors[today_games['hls']['ta']]["accent"]["r"], team_colors[today_games['hls']['ta']]["accent"]["g"], team_colors[today_games['hls']['ta']]["accent"]["b"])
+                canvas.SetPixel(x, y, home_accent_r, home_accent_g, home_accent_b)
         for x in range(2,31):
             for y in range(9,17):
-                canvas.SetPixel(x, y, team_colors[today_games['vls']['ta']]["banner"]["r"], team_colors[today_games['vls']['ta']]["banner"]["g"], team_colors[today_games['vls']['ta']]["banner"]["b"])
+                canvas.SetPixel(x, y, vis_banner_r, vis_banner_g, vis_banner_b)
         for x in range(0,2):
             for y in range(9,17):
-                canvas.SetPixel(x, y, team_colors[today_games['vls']['ta']]["accent"]["r"], team_colors[today_games['vls']['ta']]["accent"]["g"], team_colors[today_games['vls']['ta']]["accent"]["b"])
-        if (int(today_games['hls']['ftout'])) >= 1:
+                canvas.SetPixel(x, y, vis_accent_r, vis_accent_g, vis_accent_b)
+        if (home_fouls_check) >= 1:
             for x in range(35,36):
-                for y in range(2,2 + int(today_games['vls']['ftout'])):
+                for y in range(2,2 + home_fouls_check):
                     canvas.SetPixel(x, y, 255, 255, 0)
-        if (int(today_games['vls']['ftout'])) >= 1:
+        if (vis_fouls_check) >= 1:
             for x in range(35,36):
-                for y in range(11,11 + int(today_games['vls']['ftout'])):
+                for y in range(11,11 + home_fouls_check):
                     canvas.SetPixel(x, y, 255, 255, 0)
-        
-        score_x = 21
-        if int(today_games['hls']['s']) >= 100 or int(today_games['hls']['s']) >= 100:
-            score_x = 19
 
         graphics.DrawText(canvas, font_2, 3, 7, home_text_Color, home_name)
         graphics.DrawText(canvas, font_2, 3, 16, vis_text_Color, vis_name)
