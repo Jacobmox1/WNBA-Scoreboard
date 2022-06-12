@@ -81,6 +81,11 @@ while True:
             last_play_clock = last_play_clock
         
         last_play_desc = re.sub(' : ',':',re.sub('(.*\] )','',re.sub(' +', ' ',today_games['lpla']['de'])))
+        last_play_desc = re.sub('Substition','Sub',last_play_desc)
+        last_play_desc = re.sub('','',last_play_desc)
+        last_play_desc = re.sub('Substition','Sub',last_play_desc)
+        last_play_desc = re.sub('Substition','Sub',last_play_desc)
+        last_play_desc = re.sub('Substition','Sub',last_play_desc)
         if len(last_play_desc) >= 15:
             last_play_desc_1 = last_play_desc[:15] + '-'
             last_play_desc_2 = last_play_desc[15:]
