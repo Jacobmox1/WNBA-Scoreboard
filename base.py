@@ -246,7 +246,7 @@ while True:
         live_game = _get_game_detail(game_id)
 
     if len(preference_games) == 1:
-        if (live_game['hls']['s'] == '' and live_game['vls']['s'] == ''):
+        if (iserror(live_game)):
             _render_pregame(preference_games[0])
         else:
             if (preference_games[0]['stt'] != 'Final'):
