@@ -1,14 +1,11 @@
-from asyncio.windows_events import NULL
 import json
 from pickle import APPEND, TRUE
 from urllib.request import urlopen
 from pprint import pprint
 from datetime import datetime, date, timedelta
 import ctypes
-from RGBMatrixEmulator import RGBMatrix, RGBMatrixOptions, graphics
+from rgbmatrix import RGBMatrix, RGBMatrixOptions, graphics
 import time
-from RGBMatrixEmulator.adapters import ADAPTER_TYPES
-from RGBMatrixEmulator.emulators.options import RGBMatrixEmulatorConfig
 from PIL import Image
 import re
 from math import trunc
@@ -32,7 +29,7 @@ textColor = graphics.Color(255, 255, 255)
 logo = "assets/wnba.png"
 logo = Image.open(logo)
 matrix.SetImage(logo.convert("RGB"))
-time.sleep(4)
+time.sleep(5)
 logo.close()
 
 while True:    
@@ -41,30 +38,29 @@ while True:
         home_record = '(' + today_games['h']['re'] + ')'
         vis_name = today_games['v']['ta']
         vis_record = '(' + today_games['v']['re'] + ')'
-        tip_time = (datetime.strptime(today_games['utctm'],"%H:%M") - timedelta(hours=5)).strftime("%#I:%M %p")
+        tip_time = (datetime.strptime(today_games['utctm'],"%H:%M") - timedelta(hours=5)).strftime("%-I:%M %p")
         game_location = today_games['ac'] + ', ' + today_games['as']
         home_text_Color = graphics.Color(team_colors[today_games['h']['ta']]["text"]["r"], team_colors[today_games['h']['ta']]["text"]["g"], team_colors[today_games['h']['ta']]["text"]["b"])
         vis_text_Color = graphics.Color(team_colors[today_games['v']['ta']]["text"]["r"], team_colors[today_games['v']['ta']]["text"]["g"], team_colors[today_games['v']['ta']]["text"]["b"])
-        while True:
-            for x in range(2,43):
-                for y in range(0,8):
-                    canvas.SetPixel(x, y, team_colors[today_games['h']['ta']]["banner"]["r"], team_colors[today_games['h']['ta']]["banner"]["g"], team_colors[today_games['h']['ta']]["banner"]["b"])
-            for x in range(0,2):
-                for y in range(0,8):
-                    canvas.SetPixel(x, y, team_colors[today_games['h']['ta']]["accent"]["r"], team_colors[today_games['h']['ta']]["accent"]["g"], team_colors[today_games['h']['ta']]["accent"]["b"])
-            for x in range(2,43):
-                for y in range(9,17):
-                    canvas.SetPixel(x, y, team_colors[today_games['v']['ta']]["banner"]["r"], team_colors[today_games['v']['ta']]["banner"]["g"], team_colors[today_games['v']['ta']]["banner"]["b"])
-            for x in range(0,2):
-                for y in range(9,17):
-                    canvas.SetPixel(x, y, team_colors[today_games['v']['ta']]["accent"]["r"], team_colors[today_games['v']['ta']]["accent"]["g"], team_colors[today_games['v']['ta']]["accent"]["b"])
-            graphics.DrawText(canvas, font_2, 3, 7, home_text_Color, home_name)
-            graphics.DrawText(canvas, font_2, 3, 16, vis_text_Color, vis_name)
-            graphics.DrawText(canvas, font_1, 19, 7, home_text_Color, home_record)
-            graphics.DrawText(canvas, font_1, 19, 16, vis_text_Color, vis_record)
-            graphics.DrawText(canvas, font_1, 1, 24, textColor, tip_time)
-            graphics.DrawText(canvas, font_1, 1, 30, textColor, game_location)
-            matrix.SwapOnVSync(canvas)
+        for x in range(2,43):
+            for y in range(0,8):
+                canvas.SetPixel(x, y, team_colors[today_games['h']['ta']]["banner"]["r"], team_colors[today_games['h']['ta']]["banner"]["g"], team_colors[today_games['h']['ta']]["banner"]["b"])
+        for x in range(0,2):
+            for y in range(0,8):
+                canvas.SetPixel(x, y, team_colors[today_games['h']['ta']]["accent"]["r"], team_colors[today_games['h']['ta']]["accent"]["g"], team_colors[today_games['h']['ta']]["accent"]["b"])
+        for x in range(2,43):
+            for y in range(9,17):
+                canvas.SetPixel(x, y, team_colors[today_games['v']['ta']]["banner"]["r"], team_colors[today_games['v']['ta']]["banner"]["g"], team_colors[today_games['v']['ta']]["banner"]["b"])
+        for x in range(0,2):
+            for y in range(9,17):
+                canvas.SetPixel(x, y, team_colors[today_games['v']['ta']]["accent"]["r"], team_colors[today_games['v']['ta']]["accent"]["g"], team_colors[today_games['v']['ta']]["accent"]["b"])
+        graphics.DrawText(canvas, font_2, 3, 7, home_text_Color, home_name)
+        graphics.DrawText(canvas, font_2, 3, 16, vis_text_Color, vis_name)
+        graphics.DrawText(canvas, font_1, 19, 7, home_text_Color, home_record)
+        graphics.DrawText(canvas, font_1, 19, 16, vis_text_Color, vis_record)
+        graphics.DrawText(canvas, font_1, 1, 24, textColor, tip_time)
+        graphics.DrawText(canvas, font_1, 1, 30, textColor, game_location)
+        matrix.SwapOnVSync(canvas)
     
 
     def _render_game(today_games):
@@ -167,6 +163,12 @@ while True:
         game_detail = json.loads(response.read())['g']
         return game_detail
 
+    def iserror(live_game):
+        try:
+            return (live_game['lpla'] == {})
+        except KeyError:
+            return True
+
     ## Pull In Schedule For Given Day
     date_today = date.today().strftime("%Y-%m-%d")
     url = "https://data.wnba.com/data/5s/v2015/json/mobile_teams/wnba/2022/league/10_full_schedule.json"
@@ -188,7 +190,6 @@ while True:
         game_id = preference_games[0]['gid']
         live_game = _get_game_detail(game_id)
 
-    canvas.Clear()
     if len(preference_games) == 1:
         if (live_game['hls']['s'] == '' and live_game['vls']['s'] == ''):
             _render_pregame(preference_games[0])
@@ -214,14 +215,15 @@ while True:
                 today_game_ids.append(append_this)
             for l in 0,len(today_game_ids)-1:
                 live_game = _get_game_detail(today_game_ids[l])
-                if ((live_game['hls']['s'] != '0' and live_game['vls']['s'] != '0') and live_game['stt'] != 'Final'):
-                    live_game_ids.append(today_game_ids[l])
-                else:
+                if (iserror(live_game)):
                     not_live_game_ids.append(today_game_ids[l])
+                else:
+                    live_game_ids.append(today_game_ids[l])
 
                 if len(live_game_ids) >= 1:
                     #Loop trhough live games
                     for l_1 in live_game_ids:
+                        print(l_1)
                         live_game = _get_game_detail(l_1)
                         _render_game(live_game)
                         time.sleep(10)
