@@ -256,6 +256,7 @@ while True:
                 today_game_ids.append(append_this)
             for l in 0,len(today_game_ids)-1:
                 live_game = _get_game_detail(today_game_ids[l])
+                pprint(today_games[l]['stt'])
                 if ((today_games[l]['stt'] == 'Final') or iserror(live_game)):
                     not_live_game_ids.append(today_game_ids[l])
                 else:
