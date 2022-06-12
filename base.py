@@ -220,7 +220,12 @@ while True:
     def _get_game_detail(game_id):
         game_id = "".join(game_id)
         url = "https://data.wnba.com/data/10s/v2015/json/mobile_teams/wnba/2022/scores/gamedetail/" + game_id + "_gamedetail.json"
-        response = urlopen(url)
+        try:
+            response = urlopen(url)
+        except:
+            time.sleep(5)
+            print('An Exception Happened')
+            response = urlopen(url)
         game_detail = json.loads(response.read())['g']
         return game_detail
 
@@ -233,7 +238,12 @@ while True:
     ## Pull In Schedule For Given Day
     date_today = date.today().strftime("%Y-%m-%d")
     url = "https://data.wnba.com/data/5s/v2015/json/mobile_teams/wnba/2022/league/10_full_schedule.json"
-    response = urlopen(url)
+    try:
+        response = urlopen(url)
+    except:
+        time.sleep(5)
+        print('An Exception Happened')
+        response = urlopen(url)
     data_json = json.loads(response.read())
 
     all_games = []
