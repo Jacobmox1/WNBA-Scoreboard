@@ -74,7 +74,7 @@ while True:
         score_x = 21
         if int(today_games['hls']['s']) >= 100 or int(today_games['hls']['s']) >= 100:
             score_x = 19
-
+        clock_adj = 0
         try:
             last_play_clock = datetime.strptime(last_play_clock,"%M:%S.%f").strftime("%#S.%f")[:-5]
             clock_adj = 3
