@@ -103,6 +103,7 @@ while True:
             last_play_desc = re.sub('Def:','D:',last_play_desc)
             last_play_desc = re.sub('Foul: Shooting','Shooting Foul',last_play_desc)
             last_play_desc = re.sub('Foul: Offensive','Offensive Foul',last_play_desc)
+            last_play_desc = re.sub('Missed','Miss',last_play_desc)
             if len(last_play_desc) >= 15:
                 last_play_desc_1 = last_play_desc[:15] + '-'
                 last_play_desc_2 = last_play_desc[15:]
