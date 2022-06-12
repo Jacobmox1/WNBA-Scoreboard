@@ -271,7 +271,6 @@ while True:
                 today_game_ids.append(append_this)
             for l in range(0,len(today_game_ids)):
                 live_game = _get_game_detail(today_game_ids[l])
-                pprint(today_games[l]['stt'])
                 if ((today_games[l]['stt'] == 'Final') or iserror(live_game)):
                     not_live_game_ids.append(today_game_ids[l])
                 else:
@@ -288,7 +287,7 @@ while True:
                     #Loop through final and pregame games
                     for l_2 in not_live_game_ids:
                         live_game = _get_game_detail(l_2)
-                        
+                        print(not_live_game_ids)
                         if (live_game['stt'] != 'Final'):
                             pregame_game = [x for x in all_games if (x['gid'] == "".join(l_2))]
                             _render_pregame(pregame_game[0])
