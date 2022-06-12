@@ -84,7 +84,7 @@ while True:
         last_play_desc = re.sub(' : ',':',re.sub('(.*\] )','',re.sub(' +', ' ',today_games['lpla']['de'])))
         last_play_desc = re.sub('Substition replaced by','Sub for',last_play_desc)
         last_play_desc = re.sub('Out-of-Bounds','OB',last_play_desc)
-        last_play_desc = re.sub('3pt Shot','3PTer',last_play_desc)
+        last_play_desc = re.sub('3pt Shot','3PT',last_play_desc)
         last_play_desc = re.sub('PTS','P',last_play_desc)
         last_play_desc = re.sub('ThreePoints','3PT',last_play_desc)
         last_play_desc = re.sub('TwoPoints','2PT',last_play_desc)
@@ -98,6 +98,8 @@ while True:
         last_play_desc = re.sub('Regular','Full',last_play_desc)
         last_play_desc = re.sub('Jumper: Blocked','Blocked',last_play_desc)
         last_play_desc = re.sub('Driving Layup Shot','Layup',last_play_desc)
+        last_play_desc = re.sub('Off:','O:',last_play_desc)
+        last_play_desc = re.sub('Def:','D:',last_play_desc)
         if len(last_play_desc) >= 15:
             last_play_desc_1 = last_play_desc[:15] + '-'
             last_play_desc_2 = last_play_desc[15:]
