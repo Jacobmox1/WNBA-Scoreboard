@@ -103,13 +103,14 @@ while True:
         vis_accent_r = team_colors[today_games['vls']['ta']]["accent"]["r"]
         vis_accent_g = team_colors[today_games['vls']['ta']]["accent"]["g"]
         vis_accent_b = team_colors[today_games['vls']['ta']]["accent"]["b"]
-        for x in range(2,31):
+        canvas.Close()
+        for x in range(2,34):
             for y in range(0,8):
                 canvas.SetPixel(x, y, home_banner_r, home_banner_g, home_banner_b)
         for x in range(0,2):
             for y in range(0,8):
                 canvas.SetPixel(x, y, home_accent_r, home_accent_g, home_accent_b)
-        for x in range(2,31):
+        for x in range(2,34):
             for y in range(9,17):
                 canvas.SetPixel(x, y, vis_banner_r, vis_banner_g, vis_banner_b)
         for x in range(0,2):
@@ -126,8 +127,8 @@ while True:
 
         graphics.DrawText(canvas, font_2, 3, 7, home_text_Color, home_name)
         graphics.DrawText(canvas, font_2, 3, 16, vis_text_Color, vis_name)
-        graphics.DrawText(canvas, font_1, score_x, 7, home_text_Color, home_score)
-        graphics.DrawText(canvas, font_1, score_x, 16, vis_text_Color, vis_score)
+        graphics.DrawText(canvas, font_2, score_x, 7, home_text_Color, home_score)
+        graphics.DrawText(canvas, font_2, score_x, 16, vis_text_Color, vis_score)
         graphics.DrawText(canvas, font_1, 46, 12, textColor, quarter)
         graphics.DrawText(canvas, font_1, 40, 6, textColor, last_play_clock)
         graphics.DrawText(canvas, font_1, 1, 23, textColor, last_play_desc_1)
