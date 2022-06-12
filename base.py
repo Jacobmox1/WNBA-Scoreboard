@@ -45,7 +45,7 @@ while True:
         natl_broadcast = [y for y in today_games['bd']['b'] if y['scope'] == 'natl']
         try:
             natl_tv = natl_broadcast['disp']
-        except ValueError:
+        except TypeError:
             natl_tv = ''
         canvas.Clear()
         for x in range(2,43):
