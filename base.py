@@ -64,96 +64,97 @@ while True:
     
 
     def _render_game(today_games):
-        home_name = today_games['hls']['ta']
-        home_score = str(today_games['hls']['s'])
-        vis_name = today_games['vls']['ta']
-        vis_score = str(today_games['vls']['s'])
-        quarter = 'Q' + str(today_games['p'])
-        last_play_clock = today_games['lpla']['cl']
+        for q in 1,5:   
+            home_name = today_games['hls']['ta']
+            home_score = str(today_games['hls']['s'])
+            vis_name = today_games['vls']['ta']
+            vis_score = str(today_games['vls']['s'])
+            quarter = 'Q' + str(today_games['p'])
+            last_play_clock = today_games['lpla']['cl']
 
-        score_x = 21
-        if int(today_games['hls']['s']) >= 100 or int(today_games['hls']['s']) >= 100:
-            score_x = 19
-        clock_adj = 0
-        try:
-            last_play_clock = datetime.strptime(last_play_clock,"%M:%S.%f").strftime("%#S.%f")[:-5]
-            clock_adj = 3
-        except ValueError:
-            last_play_clock = last_play_clock
-        
-        last_play_desc = re.sub(' : ',':',re.sub('(.*\] )','',re.sub(' +', ' ',today_games['lpla']['de'])))
-        last_play_desc = re.sub('Substition replaced by','Sub for',last_play_desc)
-        last_play_desc = re.sub('Out-of-Bounds','OB',last_play_desc)
-        last_play_desc = re.sub('3pt Shot','3PT',last_play_desc)
-        last_play_desc = re.sub('PTS','P',last_play_desc)
-        last_play_desc = re.sub('ThreePoints','3PT',last_play_desc)
-        last_play_desc = re.sub('TwoPoints','2PT',last_play_desc)
-        last_play_desc = re.sub('Turnover','TOV',last_play_desc)
-        last_play_desc = re.sub('Free Throw','FT',last_play_desc)
-        last_play_desc = re.sub(' of ','-',last_play_desc)
-        last_play_desc = re.sub('Jump Shot:','2PT:',last_play_desc)
-        last_play_desc = re.sub('Missed Block','Blocked',last_play_desc)
-        last_play_desc = re.sub('Rebound','REB',last_play_desc)
-        last_play_desc = re.sub('Timeout','TO',last_play_desc)
-        last_play_desc = re.sub('Regular','Full',last_play_desc)
-        last_play_desc = re.sub('Jumper: Blocked','Blocked',last_play_desc)
-        last_play_desc = re.sub('Driving Layup Shot','Layup',last_play_desc)
-        last_play_desc = re.sub('Off:','O:',last_play_desc)
-        last_play_desc = re.sub('Def:','D:',last_play_desc)
-        last_play_desc = re.sub('Foul: Shooting','Shooting Foul',last_play_desc)
-        if len(last_play_desc) >= 15:
-            last_play_desc_1 = last_play_desc[:15] + '-'
-            last_play_desc_2 = last_play_desc[15:]
-        else:
-            last_play_desc_1 = last_play_desc
-            last_play_desc_2 = ''
-        home_text_Color = graphics.Color(team_colors[today_games['hls']['ta']]["text"]["r"], team_colors[today_games['hls']['ta']]["text"]["g"], team_colors[today_games['hls']['ta']]["text"]["b"])
-        vis_text_Color = graphics.Color(team_colors[today_games['vls']['ta']]["text"]["r"], team_colors[today_games['vls']['ta']]["text"]["g"], team_colors[today_games['vls']['ta']]["text"]["b"])
-        home_fouls_check = int(today_games['hls']['ftout'])
-        vis_fouls_check =  int(today_games['vls']['ftout'])
-        home_banner_r = team_colors[today_games['hls']['ta']]["banner"]["r"]
-        home_banner_g = team_colors[today_games['hls']['ta']]["banner"]["g"]
-        home_banner_b = team_colors[today_games['hls']['ta']]["banner"]["b"]
-        vis_banner_r = team_colors[today_games['vls']['ta']]["banner"]["r"]
-        vis_banner_g = team_colors[today_games['vls']['ta']]["banner"]["g"]
-        vis_banner_b = team_colors[today_games['vls']['ta']]["banner"]["b"]
-        home_accent_r = team_colors[today_games['hls']['ta']]["accent"]["r"]
-        home_accent_g = team_colors[today_games['hls']['ta']]["accent"]["g"]
-        home_accent_b = team_colors[today_games['hls']['ta']]["accent"]["b"]
-        vis_accent_r = team_colors[today_games['vls']['ta']]["accent"]["r"]
-        vis_accent_g = team_colors[today_games['vls']['ta']]["accent"]["g"]
-        vis_accent_b = team_colors[today_games['vls']['ta']]["accent"]["b"]
-        canvas.Clear()
-        for x in range(2,34):
-            for y in range(0,8):
-                canvas.SetPixel(x, y, home_banner_r, home_banner_g, home_banner_b)
-        for x in range(0,2):
-            for y in range(0,8):
-                canvas.SetPixel(x, y, home_accent_r, home_accent_g, home_accent_b)
-        for x in range(2,34):
-            for y in range(9,17):
-                canvas.SetPixel(x, y, vis_banner_r, vis_banner_g, vis_banner_b)
-        for x in range(0,2):
-            for y in range(9,17):
-                canvas.SetPixel(x, y, vis_accent_r, vis_accent_g, vis_accent_b)
-        if (home_fouls_check) >= 1:
-            for x in range(35,36):
-                for y in range(2,2 + home_fouls_check):
-                    canvas.SetPixel(x, y, 255, 255, 0)
-        if (vis_fouls_check) >= 1:
-            for x in range(35,36):
-                for y in range(11,11 + home_fouls_check):
-                    canvas.SetPixel(x, y, 255, 255, 0)
+            score_x = 21
+            if int(today_games['hls']['s']) >= 100 or int(today_games['hls']['s']) >= 100:
+                score_x = 19
+            clock_adj = 0
+            try:
+                last_play_clock = datetime.strptime(last_play_clock,"%M:%S.%f").strftime("%#S.%f")[:-5]
+                clock_adj = 3
+            except ValueError:
+                last_play_clock = last_play_clock
+            
+            last_play_desc = re.sub(' : ',':',re.sub('(.*\] )','',re.sub(' +', ' ',today_games['lpla']['de'])))
+            last_play_desc = re.sub('Substition replaced by','Sub for',last_play_desc)
+            last_play_desc = re.sub('Out-of-Bounds','OB',last_play_desc)
+            last_play_desc = re.sub('3pt Shot','3PT',last_play_desc)
+            last_play_desc = re.sub('PTS','P',last_play_desc)
+            last_play_desc = re.sub('ThreePoints','3PT',last_play_desc)
+            last_play_desc = re.sub('TwoPoints','2PT',last_play_desc)
+            last_play_desc = re.sub('Turnover','TOV',last_play_desc)
+            last_play_desc = re.sub('Free Throw','FT',last_play_desc)
+            last_play_desc = re.sub(' of ','-',last_play_desc)
+            last_play_desc = re.sub('Jump Shot:','2PT:',last_play_desc)
+            last_play_desc = re.sub('Missed Block','Blocked',last_play_desc)
+            last_play_desc = re.sub('Rebound','REB',last_play_desc)
+            last_play_desc = re.sub('Timeout','TO',last_play_desc)
+            last_play_desc = re.sub('Regular','Full',last_play_desc)
+            last_play_desc = re.sub('Jumper: Blocked','Blocked',last_play_desc)
+            last_play_desc = re.sub('Driving Layup Shot','Layup',last_play_desc)
+            last_play_desc = re.sub('Off:','O:',last_play_desc)
+            last_play_desc = re.sub('Def:','D:',last_play_desc)
+            last_play_desc = re.sub('Foul: Shooting','Shooting Foul',last_play_desc)
+            if len(last_play_desc) >= 15:
+                last_play_desc_1 = last_play_desc[:15] + '-'
+                last_play_desc_2 = last_play_desc[15:]
+            else:
+                last_play_desc_1 = last_play_desc
+                last_play_desc_2 = ''
+            home_text_Color = graphics.Color(team_colors[today_games['hls']['ta']]["text"]["r"], team_colors[today_games['hls']['ta']]["text"]["g"], team_colors[today_games['hls']['ta']]["text"]["b"])
+            vis_text_Color = graphics.Color(team_colors[today_games['vls']['ta']]["text"]["r"], team_colors[today_games['vls']['ta']]["text"]["g"], team_colors[today_games['vls']['ta']]["text"]["b"])
+            home_fouls_check = int(today_games['hls']['ftout'])
+            vis_fouls_check =  int(today_games['vls']['ftout'])
+            home_banner_r = team_colors[today_games['hls']['ta']]["banner"]["r"]
+            home_banner_g = team_colors[today_games['hls']['ta']]["banner"]["g"]
+            home_banner_b = team_colors[today_games['hls']['ta']]["banner"]["b"]
+            vis_banner_r = team_colors[today_games['vls']['ta']]["banner"]["r"]
+            vis_banner_g = team_colors[today_games['vls']['ta']]["banner"]["g"]
+            vis_banner_b = team_colors[today_games['vls']['ta']]["banner"]["b"]
+            home_accent_r = team_colors[today_games['hls']['ta']]["accent"]["r"]
+            home_accent_g = team_colors[today_games['hls']['ta']]["accent"]["g"]
+            home_accent_b = team_colors[today_games['hls']['ta']]["accent"]["b"]
+            vis_accent_r = team_colors[today_games['vls']['ta']]["accent"]["r"]
+            vis_accent_g = team_colors[today_games['vls']['ta']]["accent"]["g"]
+            vis_accent_b = team_colors[today_games['vls']['ta']]["accent"]["b"]
+            canvas.Clear()
+            for x in range(2,34):
+                for y in range(0,8):
+                    canvas.SetPixel(x, y, home_banner_r, home_banner_g, home_banner_b)
+            for x in range(0,2):
+                for y in range(0,8):
+                    canvas.SetPixel(x, y, home_accent_r, home_accent_g, home_accent_b)
+            for x in range(2,34):
+                for y in range(9,17):
+                    canvas.SetPixel(x, y, vis_banner_r, vis_banner_g, vis_banner_b)
+            for x in range(0,2):
+                for y in range(9,17):
+                    canvas.SetPixel(x, y, vis_accent_r, vis_accent_g, vis_accent_b)
+            if (home_fouls_check) >= 1:
+                for x in range(35,36):
+                    for y in range(2,2 + home_fouls_check):
+                        canvas.SetPixel(x, y, 255, 255, 0)
+            if (vis_fouls_check) >= 1:
+                for x in range(35,36):
+                    for y in range(11,11 + home_fouls_check):
+                        canvas.SetPixel(x, y, 255, 255, 0)
 
-        graphics.DrawText(canvas, font_2, 3, 7, home_text_Color, home_name)
-        graphics.DrawText(canvas, font_2, 3, 16, vis_text_Color, vis_name)
-        graphics.DrawText(canvas, font_2, score_x, 7, home_text_Color, home_score)
-        graphics.DrawText(canvas, font_2, score_x, 16, vis_text_Color, vis_score)
-        graphics.DrawText(canvas, font_1, 46, 12, textColor, quarter)
-        graphics.DrawText(canvas, font_1, 40 + clock_adj, 6, textColor, last_play_clock)
-        graphics.DrawText(canvas, font_1, 1, 23, textColor, last_play_desc_1)
-        graphics.DrawText(canvas, font_1, 1, 31, textColor, last_play_desc_2)
-        matrix.SwapOnVSync(canvas)
+            graphics.DrawText(canvas, font_2, 3, 7, home_text_Color, home_name)
+            graphics.DrawText(canvas, font_2, 3, 16, vis_text_Color, vis_name)
+            graphics.DrawText(canvas, font_2, score_x, 7, home_text_Color, home_score)
+            graphics.DrawText(canvas, font_2, score_x, 16, vis_text_Color, vis_score)
+            graphics.DrawText(canvas, font_1, 46, 12, textColor, quarter)
+            graphics.DrawText(canvas, font_1, 40 + clock_adj, 6, textColor, last_play_clock)
+            graphics.DrawText(canvas, font_1, 1, 23, textColor, last_play_desc_1)
+            graphics.DrawText(canvas, font_1, 1, 31, textColor, last_play_desc_2)
+            matrix.SwapOnVSync(canvas)
 
     def _render_postgame(today_games):
         home_name = today_games['h']['ta']
