@@ -39,7 +39,6 @@ while True:
         vis_name = today_games['v']['ta']
         vis_record = '(' + today_games['v']['re'] + ')'
         tip_time = (datetime.strptime(today_games['utctm'],"%H:%M") - timedelta(hours=5)).strftime("%-I%p")
-        tip_time = re.sub('M','',tip_time)
         game_location = today_games['ac'] + ', ' + today_games['as']
         home_text_Color = graphics.Color(team_colors[today_games['h']['ta']]["text"]["r"], team_colors[today_games['h']['ta']]["text"]["g"], team_colors[today_games['h']['ta']]["text"]["b"])
         vis_text_Color = graphics.Color(team_colors[today_games['v']['ta']]["text"]["r"], team_colors[today_games['v']['ta']]["text"]["g"], team_colors[today_games['v']['ta']]["text"]["b"])
