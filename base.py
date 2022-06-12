@@ -182,6 +182,7 @@ while True:
         vis_accent_r = team_colors[today_games['vls']['ta']]["accent"]["r"]
         vis_accent_g = team_colors[today_games['vls']['ta']]["accent"]["g"]
         vis_accent_b = team_colors[today_games['vls']['ta']]["accent"]["b"]
+        canvas.Clear()
         while True:
             for x in range(2,64):
                 for y in range(0,8):
@@ -195,13 +196,13 @@ while True:
             for x in range(0,2):
                 for y in range(9,17):
                     canvas.SetPixel(x, y, vis_accent_r, vis_accent_g, vis_accent_b)
+            graphics.DrawText(canvas, font_1, 1, 24, textColor, "Final")
             graphics.DrawText(canvas, font_2, 3, 7, home_text_Color, home_name)
             graphics.DrawText(canvas, font_2, 3, 16, vis_text_Color, vis_name)
             #graphics.DrawText(canvas, font_1, 19, 7, home_text_Color, home_record)
             #graphics.DrawText(canvas, font_1, 19, 16, vis_text_Color, vis_record)
             graphics.DrawText(canvas, font_1, 55, 7, home_text_Color, home_score)
             graphics.DrawText(canvas, font_1, 55, 16, vis_text_Color, vis_score)
-            graphics.DrawText(canvas, font_1, 1, 24, textColor, "Final")
             matrix.SwapOnVSync(canvas)
 
     def _render_no_games():
