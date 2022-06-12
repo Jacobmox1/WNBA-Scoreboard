@@ -66,7 +66,7 @@ while True:
         graphics.DrawText(canvas, font_2, 3, 16, vis_text_Color, vis_name)
         graphics.DrawText(canvas, font_1, 19, 7, home_text_Color, home_record)
         graphics.DrawText(canvas, font_1, 19, 16, vis_text_Color, vis_record)
-        graphics.DrawText(canvas, font_1, 45, 7, textColor, tip_time)
+        graphics.DrawText(canvas, font_1, 48, 7, textColor, tip_time)
         graphics.DrawText(canvas, font_1, 1, 30, textColor, game_location)
         graphics.DrawText(canvas, font_1, 1, 24, textColor, natl_tv)
         matrix.SwapOnVSync(canvas)
