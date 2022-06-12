@@ -103,7 +103,7 @@ while True:
         vis_accent_r = team_colors[today_games['vls']['ta']]["accent"]["r"]
         vis_accent_g = team_colors[today_games['vls']['ta']]["accent"]["g"]
         vis_accent_b = team_colors[today_games['vls']['ta']]["accent"]["b"]
-        canvas.Close()
+        canvas.Clear()
         for x in range(2,34):
             for y in range(0,8):
                 canvas.SetPixel(x, y, home_banner_r, home_banner_g, home_banner_b)
