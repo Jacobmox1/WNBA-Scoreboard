@@ -83,7 +83,7 @@ while True:
                 last_play_clock = last_play_clock
             
             last_play_desc = re.sub(' : ',':',re.sub('(.*\] )','',re.sub(' +', ' ',today_games['lpla']['de'])))
-            last_play_desc = re.sub('Substition replaced by','Sub for',last_play_desc)
+            last_play_desc = re.sub('Substitution replaced by','Sub for',last_play_desc)
             last_play_desc = re.sub('Out-of-Bounds','OB',last_play_desc)
             last_play_desc = re.sub('3pt Shot','3PT',last_play_desc)
             last_play_desc = re.sub('PTS','P',last_play_desc)
