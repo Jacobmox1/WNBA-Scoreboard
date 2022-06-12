@@ -268,7 +268,7 @@ while True:
             for g in today_games:
                 append_this = [str(g['gid'])]
                 today_game_ids.append(append_this)
-            for l in 0,len(today_game_ids)-1:
+            for l in range(0,len(today_game_ids)):
                 live_game = _get_game_detail(today_game_ids[l])
                 pprint(today_games[l]['stt'])
                 if ((today_games[l]['stt'] == 'Final') or iserror(live_game)):
