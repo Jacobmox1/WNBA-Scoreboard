@@ -26,7 +26,7 @@ font_1.LoadFont("assets/fonts/patched/4x6.bdf")
 font_2.LoadFont("assets/fonts/patched/5x7.bdf")
 textColor = graphics.Color(255, 255, 255)
 
-logo = "assets/ESPN.png"
+logo = "assets/wnba.png"
 logo = Image.open(logo)
 matrix.SetImage(logo.convert("RGB"))
 time.sleep(5)
@@ -42,6 +42,11 @@ while True:
         game_location = today_games['ac'] + ', ' + today_games['as']
         home_text_Color = graphics.Color(team_colors[today_games['h']['ta']]["text"]["r"], team_colors[today_games['h']['ta']]["text"]["g"], team_colors[today_games['h']['ta']]["text"]["b"])
         vis_text_Color = graphics.Color(team_colors[today_games['v']['ta']]["text"]["r"], team_colors[today_games['v']['ta']]["text"]["g"], team_colors[today_games['v']['ta']]["text"]["b"])
+        natl_broadcast = [y for y in today_games['bd']['b'] if y['scope'] == 'natl']
+        try:
+            natl_tv = natl_broadcast['disp']
+        except ValueError:
+            natl_tv = ''
         canvas.Clear()
         for x in range(2,43):
             for y in range(0,8):
@@ -61,6 +66,7 @@ while True:
         graphics.DrawText(canvas, font_1, 19, 16, vis_text_Color, vis_record)
         graphics.DrawText(canvas, font_1, 1, 24, textColor, tip_time)
         graphics.DrawText(canvas, font_1, 1, 30, textColor, game_location)
+        graphics.DrawText(canvas, font_1, 30, 24, textColor, game_location)
         matrix.SwapOnVSync(canvas)
     
 
@@ -241,7 +247,7 @@ while True:
 
     today_games = [x for x in all_games if (x['gdte'] == date_today)]
     preference_games = [x for x in all_games if (x['gdte'] == date_today) and (x['h']['ta'] == 'LVA')]
-
+    pprint(preference_games)
     if (len(preference_games) == 1):
         game_id = preference_games[0]['gid']
         live_game = _get_game_detail(game_id)
