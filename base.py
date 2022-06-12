@@ -162,6 +162,7 @@ while True:
 
     def _render_postgame(today_games):
         home_name = today_games['hls']['ta']
+        pprint( today_games['hls'])
         home_record = '(' + today_games['hls']['re'] + ')'
         home_score = today_games['hls']['s']
         vis_name = today_games['vls']['ta']
