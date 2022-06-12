@@ -155,7 +155,7 @@ while True:
             graphics.DrawText(canvas, font_1, 1, 23, textColor, last_play_desc_1)
             graphics.DrawText(canvas, font_1, 1, 31, textColor, last_play_desc_2)
             matrix.SwapOnVSync(canvas)
-            time.sleep(1)
+            time.sleep(0.5)
             print("Again")
 
     def _render_postgame(today_games):
