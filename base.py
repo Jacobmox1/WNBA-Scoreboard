@@ -276,26 +276,26 @@ while True:
                 else:
                     live_game_ids.append(today_game_ids[l])
 
-                if len(live_game_ids) >= 1:
-                    #Loop trhough live games
-                    for l_1 in live_game_ids:
-                        print(l_1)
-                        live_game = _get_game_detail(l_1)
-                        _render_game(live_game)
-                        time.sleep(10)
-                else:
-                    #Loop through final and pregame games
-                    for l_2 in not_live_game_ids:
-                        live_game = _get_game_detail(l_2)
-                        print(not_live_game_ids)
-                        if (live_game['stt'] != 'Final'):
-                            pregame_game = [x for x in all_games if (x['gid'] == "".join(l_2))]
-                            _render_pregame(pregame_game[0])
-                        
-                        if (live_game['stt'] == 'Final'):
-                            _render_postgame(live_game)
-                        
-                        time.sleep(10)
+            if len(live_game_ids) >= 1:
+                #Loop trhough live games
+                for l_1 in live_game_ids:
+                    print(l_1)
+                    live_game = _get_game_detail(l_1)
+                    _render_game(live_game)
+                    time.sleep(10)
+            else:
+                #Loop through final and pregame games
+                for l_2 in not_live_game_ids:
+                    live_game = _get_game_detail(l_2)
+                    print(not_live_game_ids)
+                    if (live_game['stt'] != 'Final'):
+                        pregame_game = [x for x in all_games if (x['gid'] == "".join(l_2))]
+                        _render_pregame(pregame_game[0])
+                    
+                    if (live_game['stt'] == 'Final'):
+                        _render_postgame(live_game)
+                    
+                    time.sleep(10)
         
         else:
             _render_no_games()
