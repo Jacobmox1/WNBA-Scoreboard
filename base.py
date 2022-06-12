@@ -87,6 +87,7 @@ while True:
         last_play_desc = re.sub('3pt Shot','3PTer',last_play_desc)
         last_play_desc = re.sub('PTS','P',last_play_desc)
         last_play_desc = re.sub('ThreePoints','3PT',last_play_desc)
+        last_play_desc = re.sub('TwoPoints','2PT',last_play_desc)
         last_play_desc = re.sub('Turnover','TOV',last_play_desc)
         last_play_desc = re.sub('Free Throw','FT',last_play_desc)
         last_play_desc = re.sub(' of ','-',last_play_desc)
