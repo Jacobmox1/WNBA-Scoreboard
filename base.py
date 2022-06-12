@@ -163,10 +163,10 @@ while True:
     def _render_postgame(today_games):
         home_name = today_games['hls']['ta']
         pprint( today_games)
-        home_record = '(' + today_games['hls']['re'] + ')'
+        #home_record = '(' + today_games['hls']['re'] + ')'
         home_score = today_games['hls']['s']
         vis_name = today_games['vls']['ta']
-        vis_record = '(' + today_games['vls']['re'] + ')'
+        #vis_record = '(' + today_games['vls']['re'] + ')'
         vis_score = today_games['vls']['s']
         home_text_Color = graphics.Color(team_colors[today_games['hls']['ta']]["text"]["r"], team_colors[today_games['hls']['ta']]["text"]["g"], team_colors[today_games['hls']['ta']]["text"]["b"])
         vis_text_Color = graphics.Color(team_colors[today_games['vls']['ta']]["text"]["r"], team_colors[today_games['vls']['ta']]["text"]["g"], team_colors[today_games['vls']['ta']]["text"]["b"])
@@ -197,8 +197,8 @@ while True:
                     canvas.SetPixel(x, y, vis_accent_r, vis_accent_g, vis_accent_b)
             graphics.DrawText(canvas, font_2, 3, 7, home_text_Color, home_name)
             graphics.DrawText(canvas, font_2, 3, 16, vis_text_Color, vis_name)
-            graphics.DrawText(canvas, font_1, 19, 7, home_text_Color, home_record)
-            graphics.DrawText(canvas, font_1, 19, 16, vis_text_Color, vis_record)
+            #graphics.DrawText(canvas, font_1, 19, 7, home_text_Color, home_record)
+            #graphics.DrawText(canvas, font_1, 19, 16, vis_text_Color, vis_record)
             graphics.DrawText(canvas, font_1, 55, 7, home_text_Color, home_score)
             graphics.DrawText(canvas, font_1, 55, 16, vis_text_Color, vis_score)
             graphics.DrawText(canvas, font_1, 1, 24, textColor, "Final")
