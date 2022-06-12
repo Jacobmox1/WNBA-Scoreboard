@@ -156,6 +156,7 @@ while True:
             graphics.DrawText(canvas, font_1, 1, 31, textColor, last_play_desc_2)
             matrix.SwapOnVSync(canvas)
             print("Again")
+            time.sleep(2)
 
     def _render_postgame(today_games):
         home_name = today_games['h']['ta']
