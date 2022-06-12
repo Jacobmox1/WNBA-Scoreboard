@@ -250,7 +250,7 @@ while True:
             for g in today_games:
                 append_this = [str(g['gid'])]
                 today_game_ids.append(append_this)
-            for l in range(0,len(today_game_ids)-1):
+            for l in 0,len(today_game_ids)-1:
                 live_game = _get_game_detail(today_game_ids[l])
                 if (iserror(live_game)):
                     not_live_game_ids.append(today_game_ids[l])
