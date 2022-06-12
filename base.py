@@ -42,11 +42,11 @@ while True:
         game_location = today_games['ac'] + ', ' + today_games['as']
         home_text_Color = graphics.Color(team_colors[today_games['h']['ta']]["text"]["r"], team_colors[today_games['h']['ta']]["text"]["g"], team_colors[today_games['h']['ta']]["text"]["b"])
         vis_text_Color = graphics.Color(team_colors[today_games['v']['ta']]["text"]["r"], team_colors[today_games['v']['ta']]["text"]["g"], team_colors[today_games['v']['ta']]["text"]["b"])
-        natl_broadcast = [y for y in today_games['bd']['b'] if y['scope'] == 'natl']
+        natl_broadcasts = [x for x in today_games['bd']['b'] if (x['scope'] == 'natl')]
         try:
-            natl_tv = natl_broadcast['disp']
-        except TypeError:
-            natl_tv = ''
+            natl_tv = natl_broadcasts[0]['disp']
+        except IndexError:
+            natl_tv = ''        
         canvas.Clear()
         for x in range(2,43):
             for y in range(0,8):

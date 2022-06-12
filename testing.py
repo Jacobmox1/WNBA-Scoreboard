@@ -25,8 +25,11 @@ for month in league_schedule:
     for game in month_schedule['g']:
         all_games.append(game)
 
-today_games_broadcasts = [x for x in all_games if (x['gdte'] == date_today)][0]['bd']
-natl_broadcast = [y for y in today_games_broadcasts['b'] if y['scope'] == 'natl']
+use_game = [x for x in all_games if (x['gdte'] == date_today)][1]
+natl_broadcasts = [x for x in use_game['bd']['b'] if (x['scope'] == 'natl')]
 
-pprint(natl_broadcast)
-pprint(len(natl_broadcast))
+try:
+    natl_tv = natl_broadcasts[0]['disp']
+except IndexError:
+    natl_tv = ''
+pprint(natl_tv)
