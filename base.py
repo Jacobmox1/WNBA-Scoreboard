@@ -239,7 +239,7 @@ while True:
             all_games.append(game)
 
     today_games = [x for x in all_games if (x['gdte'] == date_today)]
-    preference_games = [x for x in all_games if (x['gdte'] == date_today) and (x['h']['ta'] == 'MIN')]
+    preference_games = [x for x in all_games if (x['gdte'] == date_today) and (x['h']['ta'] == 'LVA')]
 
     if (len(preference_games) == 1):
         game_id = preference_games[0]['gid']
