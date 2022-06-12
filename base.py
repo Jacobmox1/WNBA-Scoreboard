@@ -165,12 +165,10 @@ while True:
             graphics.DrawText(canvas, font_1, 1, 23, textColor, last_play_desc_1)
             graphics.DrawText(canvas, font_1, 1, 31, textColor, last_play_desc_2)
             matrix.SwapOnVSync(canvas)
-            print("Again")
             time.sleep(2)
 
     def _render_postgame(today_games):
         home_name = today_games['hls']['ta']
-        pprint( today_games)
         #home_record = '(' + today_games['hls']['re'] + ')'
         home_score = str(today_games['hls']['s'])
         vis_name = today_games['vls']['ta']
@@ -248,7 +246,6 @@ while True:
 
     today_games = [x for x in all_games if (x['gdte'] == date_today)]
     preference_games = [x for x in all_games if (x['gdte'] == date_today) and (x['h']['ta'] == 'LVA')]
-    pprint(preference_games)
     if (len(preference_games) == 1):
         game_id = preference_games[0]['gid']
         live_game = _get_game_detail(game_id)
