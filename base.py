@@ -93,8 +93,8 @@ while True:
         last_play_desc = re.sub('Jump Shot','Jumper',last_play_desc)
         last_play_desc = re.sub('Missed Block','Blocked',last_play_desc)
         last_play_desc = re.sub('Rebound','REB',last_play_desc)
-        last_play_desc = re.sub('Jump Shot','Shot',last_play_desc)
-        last_play_desc = re.sub('Jump Shot','Shot',last_play_desc)
+        last_play_desc = re.sub('Timeout','TO',last_play_desc)
+        last_play_desc = re.sub('Regular','Full',last_play_desc)
         last_play_desc = re.sub('Jump Shot','Shot',last_play_desc)
         if len(last_play_desc) >= 15:
             last_play_desc_1 = last_play_desc[:15] + '-'
