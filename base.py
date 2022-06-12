@@ -42,6 +42,7 @@ while True:
         game_location = today_games['ac'] + ', ' + today_games['as']
         home_text_Color = graphics.Color(team_colors[today_games['h']['ta']]["text"]["r"], team_colors[today_games['h']['ta']]["text"]["g"], team_colors[today_games['h']['ta']]["text"]["b"])
         vis_text_Color = graphics.Color(team_colors[today_games['v']['ta']]["text"]["r"], team_colors[today_games['v']['ta']]["text"]["g"], team_colors[today_games['v']['ta']]["text"]["b"])
+        canvas.Clear()
         for x in range(2,43):
             for y in range(0,8):
                 canvas.SetPixel(x, y, team_colors[today_games['h']['ta']]["banner"]["r"], team_colors[today_games['h']['ta']]["banner"]["g"], team_colors[today_games['h']['ta']]["banner"]["b"])
