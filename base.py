@@ -64,7 +64,7 @@ while True:
     
 
     def _render_game(today_games):
-        for q in 1,5:   
+        for q in range(1,5):   
             home_name = today_games['hls']['ta']
             home_score = str(today_games['hls']['s'])
             vis_name = today_games['vls']['ta']
@@ -155,7 +155,7 @@ while True:
             graphics.DrawText(canvas, font_1, 1, 23, textColor, last_play_desc_1)
             graphics.DrawText(canvas, font_1, 1, 31, textColor, last_play_desc_2)
             matrix.SwapOnVSync(canvas)
-            time.sleep(0.5)
+            time.sleep(1)
             print("Again")
 
     def _render_postgame(today_games):
