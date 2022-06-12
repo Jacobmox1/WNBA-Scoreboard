@@ -46,8 +46,8 @@ while True:
         try:
             natl_tv = natl_broadcasts[0]['disp']
         except IndexError:
-            natl_tv = 'LP'        
-        natl_tv = re.sub('Amazon Prime','Prime',natl_tv)
+            natl_tv = 'League Pass'        
+        natl_tv = re.sub('Amazon Prime','Amazon Prime',natl_tv)
         canvas.Clear()
         for x in range(2,43):
             for y in range(0,8):
@@ -65,9 +65,9 @@ while True:
         graphics.DrawText(canvas, font_2, 3, 16, vis_text_Color, vis_name)
         graphics.DrawText(canvas, font_1, 19, 7, home_text_Color, home_record)
         graphics.DrawText(canvas, font_1, 19, 16, vis_text_Color, vis_record)
-        graphics.DrawText(canvas, font_1, 44, 7, textColor, tip_time)
+        graphics.DrawText(canvas, font_1, 45, 7, textColor, tip_time)
         graphics.DrawText(canvas, font_1, 1, 30, textColor, game_location)
-        graphics.DrawText(canvas, font_1, 30, 24, textColor, natl_tv)
+        graphics.DrawText(canvas, font_1, 1, 24, textColor, natl_tv)
         matrix.SwapOnVSync(canvas)
     
 
