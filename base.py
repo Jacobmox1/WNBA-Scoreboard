@@ -91,7 +91,7 @@ while True:
         last_play_desc = re.sub('Turnover','TOV',last_play_desc)
         last_play_desc = re.sub('Free Throw','FT',last_play_desc)
         last_play_desc = re.sub(' of ','-',last_play_desc)
-        last_play_desc = re.sub('Jump Shot','Jumper',last_play_desc)
+        last_play_desc = re.sub('Jump Shot:','2PT:',last_play_desc)
         last_play_desc = re.sub('Missed Block','Blocked',last_play_desc)
         last_play_desc = re.sub('Rebound','REB',last_play_desc)
         last_play_desc = re.sub('Timeout','TO',last_play_desc)
