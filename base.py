@@ -47,6 +47,7 @@ while True:
             natl_tv = natl_broadcasts[0]['disp']
         except IndexError:
             natl_tv = ''        
+        natl_tv = re.sub('Amazon Prime','Prime',natl_tv)
         canvas.Clear()
         for x in range(2,43):
             for y in range(0,8):
