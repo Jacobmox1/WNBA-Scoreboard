@@ -46,7 +46,7 @@ while True:
         try:
             natl_tv = natl_broadcasts[0]['disp']
         except IndexError:
-            natl_tv = 'League Pass'        
+            natl_tv = 'LP'        
         natl_tv = re.sub('Amazon Prime','Prime',natl_tv)
         canvas.Clear()
         for x in range(2,43):
