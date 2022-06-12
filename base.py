@@ -77,6 +77,7 @@ while True:
 
         try:
             last_play_clock = datetime.strptime(last_play_clock,"%M:%S.%f").strftime("%#S.%f")[:-5]
+            clock_adj = 3
         except ValueError:
             last_play_clock = last_play_clock
         
@@ -135,7 +136,7 @@ while True:
         graphics.DrawText(canvas, font_2, score_x, 7, home_text_Color, home_score)
         graphics.DrawText(canvas, font_2, score_x, 16, vis_text_Color, vis_score)
         graphics.DrawText(canvas, font_1, 46, 12, textColor, quarter)
-        graphics.DrawText(canvas, font_1, 40, 6, textColor, last_play_clock)
+        graphics.DrawText(canvas, font_1, 40 + clock_adj, 6, textColor, last_play_clock)
         graphics.DrawText(canvas, font_1, 1, 23, textColor, last_play_desc_1)
         graphics.DrawText(canvas, font_1, 1, 31, textColor, last_play_desc_2)
         matrix.SwapOnVSync(canvas)
