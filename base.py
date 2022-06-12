@@ -164,10 +164,10 @@ while True:
         home_name = today_games['hls']['ta']
         pprint( today_games)
         #home_record = '(' + today_games['hls']['re'] + ')'
-        home_score = today_games['hls']['s']
+        home_score = str(today_games['hls']['s'])
         vis_name = today_games['vls']['ta']
         #vis_record = '(' + today_games['vls']['re'] + ')'
-        vis_score = today_games['vls']['s']
+        vis_score = str(today_games['vls']['s'])
         home_text_Color = graphics.Color(team_colors[today_games['hls']['ta']]["text"]["r"], team_colors[today_games['hls']['ta']]["text"]["g"], team_colors[today_games['hls']['ta']]["text"]["b"])
         vis_text_Color = graphics.Color(team_colors[today_games['vls']['ta']]["text"]["r"], team_colors[today_games['vls']['ta']]["text"]["g"], team_colors[today_games['vls']['ta']]["text"]["b"])
         home_banner_r = team_colors[today_games['hls']['ta']]["banner"]["r"]
