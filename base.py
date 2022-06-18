@@ -188,6 +188,8 @@ while True:
         vis_accent_r = team_colors[today_games['vls']['ta']]["accent"]["r"]
         vis_accent_g = team_colors[today_games['vls']['ta']]["accent"]["g"]
         vis_accent_b = team_colors[today_games['vls']['ta']]["accent"]["b"]
+        home_offset = 0
+        vis_offset = 0
         if int(today_games['hls']['s']) >= 100:
             home_offset = 4
         if int(today_games['vls']['s']) >= 100:
