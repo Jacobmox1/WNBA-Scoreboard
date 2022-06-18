@@ -210,7 +210,7 @@ while True:
             for x in range(0,2):
                 for y in range(9,17):
                     canvas.SetPixel(x, y, vis_accent_r, vis_accent_g, vis_accent_b)
-            graphics.DrawText(canvas, font_3, 1, 24, textColor, "F")
+            graphics.DrawText(canvas, font_3, 50, 2, textColor, "F")
             graphics.DrawText(canvas, font_2, 3, 7, home_text_Color, home_name)
             graphics.DrawText(canvas, font_2, 3, 16, vis_text_Color, vis_name)
             #graphics.DrawText(canvas, font_1, 19, 7, home_text_Color, home_record)
