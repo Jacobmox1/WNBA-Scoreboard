@@ -32,4 +32,3 @@ try:
     natl_tv = natl_broadcasts[0]['disp']
 except IndexError:
     natl_tv = ''
-pprint(natl_tv)
