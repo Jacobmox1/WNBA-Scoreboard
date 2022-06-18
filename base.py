@@ -189,7 +189,7 @@ while True:
         vis_accent_g = team_colors[today_games['vls']['ta']]["accent"]["g"]
         vis_accent_b = team_colors[today_games['vls']['ta']]["accent"]["b"]
         canvas.Clear()
-        while True:
+        for q in range(1,5):
             for x in range(2,64):
                 for y in range(0,8):
                     canvas.SetPixel(x, y, home_banner_r, home_banner_g, home_banner_b)
@@ -210,10 +210,13 @@ while True:
             graphics.DrawText(canvas, font_1, 55, 7, home_text_Color, home_score)
             graphics.DrawText(canvas, font_1, 55, 16, vis_text_Color, vis_score)
             matrix.SwapOnVSync(canvas)
+            time.sleep(2)
 
     def _render_no_games():
-        home_name = 'Sorry, no games today :('
-        graphics.DrawText(canvas, font_1, 2, 7, textColor, home_name)
+        sorry_no = 'Sorry, no'
+        games_today = 'games today :('
+        graphics.DrawText(canvas, font_1, 20, 7, textColor, sorry_no)
+        graphics.DrawText(canvas, font_1, 15, 7, textColor, games_today)
         matrix.SwapOnVSync(canvas)
         time.sleep(10)
 
@@ -255,7 +258,7 @@ while True:
             all_games.append(game)
 
     today_games = [x for x in all_games if (x['gdte'] == date_today)]
-    preference_games = [x for x in all_games if (x['gdte'] == date_today) and (x['h']['ta'] == 'LVA')]
+    preference_games = [x for x in all_games if (x['gdte'] == date_today) and (x['h']['ta'] == 'XXX')]
     if (len(preference_games) == 1):
         game_id = preference_games[0]['gid']
         live_game = _get_game_detail(game_id)
