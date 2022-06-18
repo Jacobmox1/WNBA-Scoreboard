@@ -188,6 +188,10 @@ while True:
         vis_accent_r = team_colors[today_games['vls']['ta']]["accent"]["r"]
         vis_accent_g = team_colors[today_games['vls']['ta']]["accent"]["g"]
         vis_accent_b = team_colors[today_games['vls']['ta']]["accent"]["b"]
+        if int(today_games['hls']['s']) >= 100:
+            home_offset = 4
+        if int(today_games['vls']['s']) >= 100:
+            vis_offset = 4
         canvas.Clear()
         for q in range(1,5):
             for x in range(2,64):
@@ -207,8 +211,8 @@ while True:
             graphics.DrawText(canvas, font_2, 3, 16, vis_text_Color, vis_name)
             #graphics.DrawText(canvas, font_1, 19, 7, home_text_Color, home_record)
             #graphics.DrawText(canvas, font_1, 19, 16, vis_text_Color, vis_record)
-            graphics.DrawText(canvas, font_1, 55, 7, home_text_Color, home_score)
-            graphics.DrawText(canvas, font_1, 55, 16, vis_text_Color, vis_score)
+            graphics.DrawText(canvas, font_1, 55 - home_offset, 7, home_text_Color, home_score)
+            graphics.DrawText(canvas, font_1, 55 - vis_offset, 16, vis_text_Color, vis_score)
             matrix.SwapOnVSync(canvas)
             time.sleep(2)
 
