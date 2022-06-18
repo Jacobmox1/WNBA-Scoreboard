@@ -196,25 +196,25 @@ while True:
             vis_offset = 4
         canvas.Clear()
         for q in range(1,5):
-            for x in range(2,58):
+            for x in range(2,48):
                 for y in range(0,8):
                     canvas.SetPixel(x, y, home_banner_r, home_banner_g, home_banner_b)
             for x in range(0,2):
                 for y in range(0,8):
                     canvas.SetPixel(x, y, home_accent_r, home_accent_g, home_accent_b)
-            for x in range(2,58):
+            for x in range(2,48):
                 for y in range(9,17):
                     canvas.SetPixel(x, y, vis_banner_r, vis_banner_g, vis_banner_b)
             for x in range(0,2):
                 for y in range(9,17):
                     canvas.SetPixel(x, y, vis_accent_r, vis_accent_g, vis_accent_b)
-            graphics.DrawText(canvas, font_1, 1, 24, textColor, "Final")
+            graphics.DrawText(canvas, font_1, 1, 24, textColor, "F")
             graphics.DrawText(canvas, font_2, 3, 7, home_text_Color, home_name)
             graphics.DrawText(canvas, font_2, 3, 16, vis_text_Color, vis_name)
             #graphics.DrawText(canvas, font_1, 19, 7, home_text_Color, home_record)
             #graphics.DrawText(canvas, font_1, 19, 16, vis_text_Color, vis_record)
-            graphics.DrawText(canvas, font_2, 46 - home_offset, 7, home_text_Color, home_score)
-            graphics.DrawText(canvas, font_2, 46 - vis_offset, 16, vis_text_Color, vis_score)
+            graphics.DrawText(canvas, font_2, 36 - home_offset, 7, home_text_Color, home_score)
+            graphics.DrawText(canvas, font_2, 36 - vis_offset, 16, vis_text_Color, vis_score)
             matrix.SwapOnVSync(canvas)
             time.sleep(2)
 
