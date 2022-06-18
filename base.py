@@ -215,8 +215,8 @@ while True:
     def _render_no_games():
         sorry_no = 'Sorry, no'
         games_today = 'games today :('
-        graphics.DrawText(canvas, font_1, 15, 7, textColor, sorry_no)
-        graphics.DrawText(canvas, font_1, 15, 18, textColor, games_today)
+        graphics.DrawText(canvas, font_1, 15, 10, textColor, sorry_no)
+        graphics.DrawText(canvas, font_1, 10, 16, textColor, games_today)
         matrix.SwapOnVSync(canvas)
         time.sleep(10)
 
