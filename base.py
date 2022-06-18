@@ -216,7 +216,7 @@ while True:
         sorry_no = 'Sorry, no'
         games_today = 'games today :('
         graphics.DrawText(canvas, font_1, 15, 10, textColor, sorry_no)
-        graphics.DrawText(canvas, font_1, 10, 16, textColor, games_today)
+        graphics.DrawText(canvas, font_1, 8, 16, textColor, games_today)
         matrix.SwapOnVSync(canvas)
         time.sleep(10)
 
