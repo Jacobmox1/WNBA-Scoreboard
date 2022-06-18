@@ -25,7 +25,7 @@ font_2 = graphics.Font()
 font_3 = graphics.Font()
 font_1.LoadFont("assets/fonts/patched/4x6.bdf")
 font_2.LoadFont("assets/fonts/patched/5x7.bdf")
-font_3.LoadFont("assets/fonts/patched/9x13.bdf")
+font_3.LoadFont("assets/fonts/patched/9x18.bdf")
 textColor = graphics.Color(255, 255, 255)
 
 logo = "assets/wnba.png"
