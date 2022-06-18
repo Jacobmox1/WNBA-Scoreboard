@@ -240,6 +240,7 @@ while True:
 
     ## Pull In Schedule For Given Day
     date_today = date.today().strftime("%Y-%m-%d")
+    date_today = '2022-06-17'
     url = "https://data.wnba.com/data/5s/v2015/json/mobile_teams/wnba/2022/league/10_full_schedule.json"
     try:
         response = urlopen(url)
