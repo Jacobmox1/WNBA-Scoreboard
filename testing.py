@@ -28,3 +28,4 @@ for month in league_schedule:
 use_game = [x for x in all_games if (x['gdte'] == date_today)]
 
 pprint(use_game)
+
