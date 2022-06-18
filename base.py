@@ -213,8 +213,8 @@ while True:
             graphics.DrawText(canvas, font_2, 3, 16, vis_text_Color, vis_name)
             #graphics.DrawText(canvas, font_1, 19, 7, home_text_Color, home_record)
             #graphics.DrawText(canvas, font_1, 19, 16, vis_text_Color, vis_record)
-            graphics.DrawText(canvas, font_1, 55 - home_offset, 7, home_text_Color, home_score)
-            graphics.DrawText(canvas, font_1, 55 - vis_offset, 16, vis_text_Color, vis_score)
+            graphics.DrawText(canvas, font_2, 52 - home_offset, 7, home_text_Color, home_score)
+            graphics.DrawText(canvas, font_2, 52 - vis_offset, 16, vis_text_Color, vis_score)
             matrix.SwapOnVSync(canvas)
             time.sleep(2)
 
