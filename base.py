@@ -22,8 +22,10 @@ team_colors = json.load(colors_json)
 
 font_1 = graphics.Font()
 font_2 = graphics.Font()
+font_3 = graphics.Font()
 font_1.LoadFont("assets/fonts/patched/4x6.bdf")
 font_2.LoadFont("assets/fonts/patched/5x7.bdf")
+font_3.LoadFont("assets/fonts/patched/9x13.bdf")
 textColor = graphics.Color(255, 255, 255)
 
 logo = "assets/wnba.png"
@@ -208,7 +210,7 @@ while True:
             for x in range(0,2):
                 for y in range(9,17):
                     canvas.SetPixel(x, y, vis_accent_r, vis_accent_g, vis_accent_b)
-            graphics.DrawText(canvas, font_1, 1, 24, textColor, "F")
+            graphics.DrawText(canvas, font_3, 1, 24, textColor, "F")
             graphics.DrawText(canvas, font_2, 3, 7, home_text_Color, home_name)
             graphics.DrawText(canvas, font_2, 3, 16, vis_text_Color, vis_name)
             #graphics.DrawText(canvas, font_1, 19, 7, home_text_Color, home_record)
