@@ -12,7 +12,7 @@ from RGBMatrixEmulator.emulators.options import RGBMatrixEmulatorConfig
 from PIL import Image
 import re
 
-date_today = date.today().strftime("%Y-%m-%d")
+date_today = '2022-06-14'
 url = "https://data.wnba.com/data/5s/v2015/json/mobile_teams/wnba/2022/league/10_full_schedule.json"
 response = urlopen(url)
 data_json = json.loads(response.read())
@@ -25,10 +25,6 @@ for month in league_schedule:
     for game in month_schedule['g']:
         all_games.append(game)
 
-use_game = [x for x in all_games if (x['gdte'] == date_today)][1]
-natl_broadcasts = [x for x in use_game['bd']['b'] if (x['scope'] == 'natl')]
+use_game = [x for x in all_games if (x['gdte'] == date_today)]
 
-try:
-    natl_tv = natl_broadcasts[0]['disp']
-except IndexError:
-    natl_tv = ''
+pprint(use_game)
